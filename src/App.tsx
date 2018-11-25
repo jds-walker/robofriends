@@ -16,7 +16,21 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Card robots={robots} />
+        <Card
+          robotEmail={robots[0].email}
+          robotId={robots[0].id}
+          robotName={robots[0].name}
+        />
+        <Card
+          robotEmail={robots[1].email}
+          robotId={robots[1].id}
+          robotName={robots[1].name}
+        />
+        <Card
+          robotEmail={robots[2].email}
+          robotId={robots[2].id}
+          robotName={robots[2].name}
+        />
       </div>
     );
   }
