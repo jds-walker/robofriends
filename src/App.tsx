@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
 import { robots } from "./robots";
-import "tachyons";
 import CardList from "./Components/CardList/CardList";
+import SearchBox from "./Components/SearchBox/SearchBox";
+import "tachyons";
 
 export interface IRobot {
   name: string;
@@ -13,7 +14,12 @@ export interface IRobot {
 
 class App extends Component {
   render() {
-    return <CardList robots={robots} />;
+    return (
+      <div className="tc">
+        <SearchBox />
+        <CardList robots={robots} />
+      </div>
+    );
   }
 }
 
