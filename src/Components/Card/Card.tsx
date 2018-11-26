@@ -1,5 +1,4 @@
 import React from "react";
-import { IRobot } from "../../App";
 
 const Card = ({
   robotEmail,
