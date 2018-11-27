@@ -7,7 +7,7 @@ interface ISearchBoxProps {
 const SearchBox = ({ searchChange }: ISearchBoxProps) => {
   return (
     <div className="pa2">
-      <h1 className="tc">RoboFriends</h1>
+      <h1 className="f2">RoboFriends</h1>
       <input
         className="pa3 ba b--green bg-lightest-blue"
         type="search"

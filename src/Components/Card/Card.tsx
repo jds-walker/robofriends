@@ -10,7 +10,7 @@ const Card = ({
   robotId: number;
 }) => {
   return (
-    <div className="tc bg-light-green dib br3 pa3 ma2 grow bw2 shaddow5">
+    <div className="tc bg-light-green dib br3 pa3 ma2 grow bw2 shaddw5">
       <img alt="robots" src={`https://robohash.org/${robotId}?150x150`} />
       <div>
         <h2>{robotName}</h2>
