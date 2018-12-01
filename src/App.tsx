@@ -1,6 +1,5 @@
 import * as React from "react";
 import "./App.css";
-import { robots } from "./robots";
 import CardList from "./Components/CardList/CardList";
 import SearchBox from "./Components/SearchBox/SearchBox";
 import "tachyons";
@@ -23,9 +22,15 @@ class App extends React.Component<IAppProps, IAppState> {
   constructor(props: IAppProps) {
     super(props);
     this.state = {
-      robots: robots,
+      robots: [],
       searchfield: ""
     };
+  }
+
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(res => res.json())
+      .then(users => this.setState({ robots: users }));
   }
 
   onSearchChange = (event: React.SyntheticEvent<HTMLInputElement>): void => {
@@ -37,13 +42,16 @@ class App extends React.Component<IAppProps, IAppState> {
     const filteredRobots = robots.filter(robot => {
       return robot.name.toLowerCase().includes(searchfield.toLowerCase());
     });
-
-    return (
-      <div className="tc">
-        <SearchBox searchChange={this.onSearchChange} />
-        <CardList robots={filteredRobots} />
-      </div>
-    );
+    if (robots.length === 0) {
+      return <h1 className="tc">Loading</h1>;
+    } else {
+      return (
+        <div className="tc">
+          <SearchBox searchChange={this.onSearchChange} />
+          <CardList robots={filteredRobots} />
+        </div>
+      );
+    }
   }
 }
 
