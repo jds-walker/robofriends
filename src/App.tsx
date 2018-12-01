@@ -46,7 +46,7 @@ class App extends React.Component<IAppProps, IAppState> {
       return <h1 className="tc">Loading</h1>;
     } else {
       return (
-        <div className="tc">
+        <div className="tc pt7">
           <SearchBox searchChange={this.onSearchChange} />
           <CardList robots={filteredRobots} />
         </div>
