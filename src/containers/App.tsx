@@ -2,6 +2,7 @@ import * as React from "react";
 import "./App.css";
 import CardList from "../components/CardList/CardList";
 import SearchBox from "../components/SearchBox/SearchBox";
+import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import "tachyons";
 
 export interface IRobot {
@@ -48,7 +49,9 @@ class App extends React.Component<IAppProps, IAppState> {
       return (
         <div className="tc pt7">
           <SearchBox searchChange={this.onSearchChange} />
-          <CardList robots={filteredRobots} />
+          <ErrorBoundary>
+            <CardList robots={filteredRobots} />
+          </ErrorBoundary>
         </div>
       );
     }
