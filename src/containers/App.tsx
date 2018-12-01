@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./App.css";
-import CardList from "./Components/CardList/CardList";
-import SearchBox from "./Components/SearchBox/SearchBox";
+import CardList from "../components/CardList/CardList";
+import SearchBox from "../components/SearchBox/SearchBox";
 import "tachyons";
 
 export interface IRobot {

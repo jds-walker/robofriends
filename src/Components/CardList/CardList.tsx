@@ -1,5 +1,5 @@
 import React from "react";
-import { IRobot } from "../../App";
+import { IRobot } from "../../containers/App";
 import Card from "../Card/Card";
 
 const CardList = ({ robots }: { robots: Array<IRobot> }) => {
