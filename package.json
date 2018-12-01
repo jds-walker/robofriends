@@ -40,5 +40,6 @@
     "@types/enzyme-adapter-react-16": "^1.0.3",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0"
-  }
+  },
+  "homepage": "http://jds-walker.github.io/robofriends"
 }
