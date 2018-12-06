@@ -1,5 +1,4 @@
 import { CHANGE_SEARCH_FIELD } from "./constants";
-import { object, string, any } from "prop-types";
 
 interface IInitialState {
   searchField: string;
