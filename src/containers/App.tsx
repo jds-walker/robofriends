@@ -6,17 +6,22 @@ import SearchBox from "../components/SearchBox/SearchBox";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 import "tachyons";
 
-import { setSearchField } from "../actions";
+import { setSearchField, requestRobots } from "../actions";
 
 const mapStateToProps = (state: any) => {
   return {
-    searchField: state.searchField
+    searchField: state.searchRobots.searchField,
+    robots: state.requestRobots.robots,
+    isPending: state.requestRobots.isPending,
+    error: state.requestRobots.error
   };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    onSearchChange: (event: any) => dispatch(setSearchField(event.target.value))
+    onSearchChange: (event: any) =>
+      dispatch(setSearchField(event.target.value)),
+    onRequestRobots: () => dispatch(requestRobots())
   };
 };
 
@@ -27,36 +32,25 @@ export interface IRobot {
   email: string;
 }
 
-interface IAppState {
-  robots: Array<IRobot>;
-}
-
 interface IAppProps {
   searchField: string;
+  robots: any;
+  onRequestRobots: any;
+  isPending: any;
   onSearchChange: (Event: React.SyntheticEvent<Element>) => void;
 }
 
-class App extends React.Component<IAppProps, IAppState> {
-  constructor(props: IAppProps) {
-    super(props);
-    this.state = {
-      robots: []
-    };
-  }
-
+class App extends React.Component<IAppProps> {
   componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then(res => res.json())
-      .then(users => this.setState({ robots: users }));
+    this.props.onRequestRobots();
   }
 
   render() {
-    const { robots } = this.state;
-    const { searchField, onSearchChange } = this.props;
-    const filteredRobots = robots.filter(robot => {
+    const { searchField, onSearchChange, robots, isPending } = this.props;
+    const filteredRobots = robots.filter((robot: any) => {
       return robot.name.toLowerCase().includes(searchField.toLowerCase());
     });
-    if (robots.length === 0) {
+    if (isPending) {
       return <h1 className="tc">Loading</h1>;
     } else {
       return (
