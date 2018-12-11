@@ -3,4 +3,9 @@ nav {
   top: 0;
   width: 100%;
   z-index: 500;
+  background: linear-gradient(
+    to left,
+    rgba(7, 27, 82, 0.98) 0%,
+    rgba(0, 128, 128, 0.98) 100%
+  ); /* w3c */
 }

@@ -8,7 +8,7 @@ interface ISearchBoxProps {
 const SearchBox = ({ searchChange }: ISearchBoxProps) => {
   return (
     <nav>
-      <div className="pa2 bg-black">
+      <div className="pa2">
         <h1 className="f2">RoboFriends</h1>
         <input
           aria-label="search robots"
